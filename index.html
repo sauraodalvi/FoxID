@@ -1,0 +1,1354 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Modern Premium Color Palette */
+  --orange: #FF5A1F;
+  --orange-light: #FFF0EB;
+  --navy: #0A192F;
+  --slate: #495670;
+  --mint: #00D09C;
+  --mint-light: #E6FAF4;
+  --amber: #FFC000;
+  --amber-light: #FFF9E6;
+  --red: #FF3B30;
+  --red-light: #FFEBEC;
+  --purple: #7B61FF;
+  --purple-light: #F2EFFF;
+  
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F8F9FA;
+  --color-background-tertiary: #F1F3F5;
+  
+  --color-border-primary: #E2E8F0;
+  --color-border-secondary: #EDF2F7;
+  --color-border-tertiary: #F1F5F9;
+  
+  --color-text-primary: #1A202C;
+  --color-text-secondary: #4A5568;
+  --color-text-tertiary: #718096;
+  
+  --color-background-info: #EBF4FF;
+  --color-text-info: #3182CE;
+  --color-border-info: #BEE3F8;
+  
+  --color-background-success: #F0FFF4;
+  --color-text-success: #38A169;
+  --color-border-success: #C6F6D5;
+  
+  --color-background-danger: #FFF5F5;
+  --color-text-danger: #E53E3E;
+  --color-border-danger: #FED7D7;
+  
+  --color-background-warning: #FFFFF0;
+  --color-text-warning: #D69E2E;
+  --color-border-warning: #FEFCBF;
+
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 24px rgba(0,0,0,0.08);
+  --shadow-hover: 0 20px 32px rgba(0,0,0,0.12);
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
+
+.deck {
+  max-width: 760px;
+  margin: 40px auto;
+  background: var(--color-background-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border-primary);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pill {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-full);
+  border: 1px solid transparent;
+  background: var(--color-background-tertiary);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.pill.active, .pill:hover {
+  background: var(--color-text-primary);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.slide {
+  display: none;
+  padding: 40px 48px;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide.active { display: block; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  text-align: center;
+  padding: 20px 0 40px;
+}
+
+.fox-logo {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--orange), #FF8C00);
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 16px rgba(255, 90, 31, 0.25);
+  transform: rotate(-5deg);
+  transition: transform var(--transition-normal);
+}
+
+.fox-logo:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #1A202C, #4A5568);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  max-width: 540px;
+  margin: 0 auto 24px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--border-radius-full);
+  margin: 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-orange { background: var(--orange-light); color: var(--orange); }
+.badge-blue { background: var(--color-background-info); color: var(--color-text-info); }
+.badge-green { background: var(--mint-light); color: var(--mint); }
+.badge-warn { background: var(--amber-light); color: var(--amber); }
+
+.section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 40px 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-primary);
+  margin-left: 16px;
+}
+
+.card {
+  background: var(--color-background-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-secondary);
+  transform: translateY(-2px);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.card ul {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  padding-left: 20px;
+}
+
+.card ul li { margin-bottom: 6px; }
+
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.ic-orange { background: var(--orange-light); color: var(--orange); }
+.ic-blue { background: var(--color-background-info); color: var(--color-text-info); }
+.ic-green { background: var(--mint-light); color: var(--mint); }
+.ic-purple { background: var(--purple-light); color: var(--purple); }
+.ic-amber { background: var(--amber-light); color: var(--amber); }
+
+.usp-box {
+  background: linear-gradient(145deg, var(--navy), #1e293b);
+  border-radius: var(--border-radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(10, 25, 47, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.usp-box::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 120px;
+  color: rgba(255,255,255,0.05);
+  font-family: serif;
+  line-height: 1;
+}
+
+.usp-box .usp-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  margin-bottom: 24px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border-primary);
+}
+
+.table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border-tertiary);
+  color: var(--color-text-primary);
+  vertical-align: top;
+  background: #fff;
+}
+
+.table tr:last-child td { border-bottom: none; }
+
+.table tr:hover td { background: var(--color-background-tertiary); }
+
+.check { color: var(--mint); font-weight: 600; }
+.cross { color: var(--red); }
+.partial { color: var(--amber); }
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.risk-card {
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  border: 1px solid;
+  transition: var(--transition-fast);
+}
+
+.risk-card:hover { transform: translateY(-2px); }
+
+.risk-high { background: var(--color-background-danger); border-color: var(--color-border-danger); }
+.risk-med { background: var(--color-background-warning); border-color: var(--color-border-warning); }
+.risk-low { background: var(--color-background-success); border-color: var(--color-border-success); }
+
+.risk-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.risk-card p { font-size: 13px; line-height: 1.6; }
+
+.risk-high h4 { color: var(--red); }
+.risk-med h4 { color: var(--amber); }
+.risk-low h4 { color: var(--mint); }
+
+.risk-high p, .risk-med p, .risk-low p { color: var(--color-text-secondary); }
+
+.priority-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+
+.priority-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+.priority-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.p1 { background: var(--red-light); color: var(--red); }
+.p2 { background: var(--amber-light); color: var(--amber); }
+.p3 { background: var(--mint-light); color: var(--mint); }
+.p4 { background: var(--color-background-tertiary); color: var(--color-text-secondary); }
+
+.priority-row .info { flex: 1; }
+.priority-row .info h4 { font-size: 15px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+.priority-row .info p { font-size: 14px; color: var(--color-text-secondary); }
+
+.billing-option {
+  background: var(--color-background-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+}
+
+.billing-option:hover { border-color: var(--color-text-primary); }
+
+.billing-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-background-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.billing-header h3 { font-size: 15px; font-weight: 600; color: var(--color-text-primary); }
+
+.billing-body {
+  padding: 0 20px 20px;
+  display: none;
+  border-top: 1px solid var(--color-border-tertiary);
+  background: var(--color-background-secondary);
+}
+
+.billing-body.open { display: block; padding-top: 20px; animation: fadeIn .3s ease; }
+
+.pro-con { display: flex; gap: 24px; }
+.pros, .cons { flex: 1; background: #fff; padding: 16px; border-radius: var(--border-radius-sm); border: 1px solid var(--color-border-primary); }
+
+.pros h4 { font-size: 13px; color: var(--mint); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.cons h4 { font-size: 13px; color: var(--red); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.pros li, .cons li { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 8px; position: relative; padding-left: 16px; }
+.pros li::before { content: '✓'; position: absolute; left: 0; color: var(--mint); font-weight: bold; }
+.cons li::before { content: '✕'; position: absolute; left: 0; color: var(--red); font-weight: bold; font-size: 10px; top: 2px; }
+
+.recommended-banner {
+  background: linear-gradient(135deg, var(--color-background-info), #D9EAF7);
+  border: 1px solid var(--color-border-info);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommended-banner::before {
+  content: '⭐ RECOMMENDATION';
+  position: absolute;
+  top: 0; right: 0;
+  background: var(--color-text-info);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-bottom-left-radius: var(--border-radius-md);
+  letter-spacing: 0.05em;
+}
+
+.recommended-banner h3 { font-size: 16px; font-weight: 600; color: var(--color-text-info); margin-bottom: 8px; }
+.recommended-banner p { font-size: 14px; color: var(--color-text-secondary); }
+
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric {
+  background: #fff;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.metric:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--color-border-info); }
+
+.metric .val { font-size: 28px; font-weight: 700; color: var(--color-text-primary); letter-spacing: -0.02em; }
+.metric .lbl { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.q-box {
+  background: #fff;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.q-box:hover { border-color: var(--color-border-info); }
+
+.q-box h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.q-box p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 12px;
+  line-height: 1.7;
+  display: none;
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-border-primary);
+}
+
+.q-box.open { border-color: var(--color-text-info); box-shadow: var(--shadow-md); }
+.q-box.open p { display: block; animation: fadeIn .3s ease; }
+.q-box .toggle {
+  color: var(--color-text-tertiary);
+  font-size: 20px;
+  font-weight: 300;
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--color-background-tertiary);
+  transition: var(--transition-fast);
+}
+.q-box:hover .toggle { background: var(--color-border-info); color: var(--color-text-info); }
+.q-box.open .toggle { background: var(--color-text-info); color: #fff; transform: rotate(180deg); }
+
+.roadmap-row { display: flex; gap: 16px; margin-bottom: 24px; }
+
+.roadmap-phase {
+  flex: 1;
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  border: 1px solid var(--color-border-primary);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.roadmap-phase h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+}
+
+.roadmap-phase ul { font-size: 13px; color: var(--color-text-secondary); padding-left: 20px; line-height: 1.7; }
+
+.rp1 h4 { color: var(--mint); border-color: var(--mint); }
+.rp2 h4 { color: var(--color-text-info); border-color: var(--color-text-info); }
+.rp3 h4 { color: var(--amber); border-color: var(--amber); }
+
+.flow-steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-primary);
+}
+
+.flow-step {
+  flex: 1;
+  min-width: 120px;
+  background: #fff;
+  padding: 16px 12px;
+  text-align: center;
+  position: relative;
+  border-right: 1px solid var(--color-border-primary);
+}
+
+.flow-step:last-child { border-right: none; }
+
+.flow-step .fs-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--navy);
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.flow-step .fs-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.flow-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--color-text-tertiary);
+  z-index: 1;
+  background: #fff;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--color-border-primary);
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.legal-card {
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  border: 1px solid var(--color-border-primary);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.legal-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.legal-card ul { font-size: 13px; color: var(--color-text-secondary); padding-left: 20px; line-height: 1.7; }
+
+.admin-feature {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--color-border-primary);
+}
+
+.admin-feature:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.admin-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  background: var(--color-background-secondary);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.admin-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.admin-body p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+
+.admin-body .why {
+  font-size: 13px;
+  color: var(--color-text-info);
+  margin-top: 10px;
+  font-weight: 500;
+  background: var(--color-background-info);
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  display: inline-block;
+}
+
+.genai-card {
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.genai-1 { background: linear-gradient(135deg, #F0F7FF, #E6FFFA); border-color: var(--color-border-info); }
+.genai-2 { background: linear-gradient(135deg, #F5F3FF, #FFF5F5); border-color: #E9D8FD; }
+
+.genai-card::after {
+  content: '✨ AI';
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 12px; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(4px);
+}
+
+.genai-1::after { color: var(--color-text-info); }
+.genai-2::after { color: var(--purple); }
+
+.genai-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+.genai-1 h3 { color: var(--color-text-info); }
+.genai-2 h3 { color: var(--purple); }
+
+.genai-card p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+
+.genai-card .example {
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: var(--border-radius-md);
+  font-family: monospace;
+  background: rgba(255,255,255,0.8);
+  border: 1px dashed;
+}
+
+.genai-1 .example { color: var(--color-text-info); border-color: var(--color-border-info); }
+.genai-2 .example { color: var(--purple); border-color: #E9D8FD; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media(max-width: 768px) {
+  .slide { padding: 24px; }
+  .card-grid, .card-grid-3, .risk-grid, .legal-grid, .metric-row { grid-template-columns: 1fr; }
+  .roadmap-row { flex-direction: column; }
+  .pro-con { flex-direction: column; gap: 16px; }
+  .flow-steps { flex-direction: column; border-right: 1px solid var(--color-border-primary); border-bottom: none; }
+  .flow-step { border-right: none; border-bottom: 1px solid var(--color-border-primary); padding: 16px; display: flex; align-items: center; gap: 16px; text-align: left; }
+  .flow-step .fs-num { margin: 0; }
+  .flow-step:not(:last-child)::after { right: auto; left: 50%; top: auto; bottom: -10px; transform: translateX(-50%) rotate(90deg); }
+  .deck { margin: 0; border-radius: 0; box-shadow: none; border-bottom: 1px solid var(--color-border-primary); }
+  .hero h1 { font-size: 28px; }
+}
+</style>
+
+<h2 class="sr-only">Fox ID — Next-Gen IAM SaaS Platform Proposal by Lead Platform PM</h2>
+
+<div class="deck">
+<div class="nav">
+  <div class="nav-pills">
+    <button class="pill active" onclick="show('overview')">Overview</button>
+    <button class="pill" onclick="show('core')">Part 1: Core</button>
+    <button class="pill" onclick="show('admin')">Part 2: Admin</button>
+    <button class="pill" onclick="show('billing')">Part 3: Billing</button>
+    <button class="pill" onclick="show('questions')" style="display: none;">Interview Q&amp;A</button>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div id="slide-overview" class="slide active">
+  <div class="hero">
+    <div class="fox-logo">🦊</div>
+    <h1>Fox ID — Platform Proposal</h1>
+    <p>A developer-first, AI-native, enterprise-ready Identity-as-a-Service platform. Ship secure login in hours, not months.</p>
+    <div>
+      <span class="tag badge-orange">Lead Platform PM Proposal</span>
+      <span class="tag badge-blue">All 3 Parts Covered</span>
+      <span class="tag badge-green">Interview Ready</span>
+    </div>
+  </div>
+
+  <div class="section-title">What we're building</div>
+  <div class="card-grid-3">
+    <div class="card" style="cursor:pointer" onclick="show('core')">
+      <div style="font-size:22px;margin-bottom:8px">🎯</div>
+      <h3>Part 1: The Core</h3>
+      <p>USP, table-stakes features, 3 differentiators, 2 GenAI use cases, challenges, legal</p>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="show('admin')">
+      <div style="font-size:22px;margin-bottom:8px">🖥️</div>
+      <h3>Part 2: Admin Portal</h3>
+      <p>Dashboard features, prioritization framework, and the "why" behind every major feature</p>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="show('billing')">
+      <div style="font-size:22px;margin-bottom:8px">💳</div>
+      <h3>Part 3: Billing</h3>
+      <p>MAU vs per-transaction vs tiered — pros/cons and our recommended hybrid model</p>
+    </div>
+  </div>
+
+  <div class="section-title">Who we serve</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="icon-row"><div class="icon-circle ic-blue">👨‍💻</div><h3>Developers</h3></div>
+      <p>Want to integrate login in &lt;30 minutes. Need clean SDKs, clear docs, and no auth complexity.</p>
+    </div>
+    <div class="card">
+      <div class="icon-row"><div class="icon-circle ic-orange">🏢</div><h3>CTOs / Enterprises</h3></div>
+      <p>Need compliance, uptime SLAs, audit trails, RBAC, and fraud protection at scale.</p>
+    </div>
+  </div>
+
+  <div class="section-title">The one-line vision</div>
+  <div class="usp-box">
+    <div class="usp-text">"The most extensible, AI-powered, privacy-first IAM platform — built for developer speed and enterprise trust."</div>
+  </div>
+
+  <div class="section-title">Competitor landscape (simplified)</div>
+  <table class="table">
+    <tr><th>Platform</th><th>Strength</th><th>Weakness</th><th>Fox ID edge</th></tr>
+    <tr><td>Auth0</td><td>Dev-friendly, MAU model</td><td>Expensive at scale, limited AI</td><td>Cheaper + AI-native</td></tr>
+    <tr><td>Okta</td><td>Enterprise trust</td><td>Complex, slow onboarding</td><td>Self-serve + simple UX</td></tr>
+    <tr><td>Firebase Auth</td><td>Google ecosystem, free tier</td><td>No enterprise features</td><td>RBAC + compliance built in</td></tr>
+    <tr><td>Cognito</td><td>AWS integration</td><td>Poor DX, confusing pricing</td><td>Better developer experience</td></tr>
+    <tr><td>Descope</td><td>No-code flows</td><td>New, less enterprise trust</td><td>Deeper AI + compliance</td></tr>
+  </table>
+</div>
+
+<!-- CORE -->
+<div id="slide-core" class="slide">
+  <div class="section-title">Part 1 — USP &amp; Table-Stakes Features</div>
+
+  <div class="usp-box">
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Unique Selling Proposition</div>
+    <div class="usp-text">"Fox ID lets any company ship secure, AI-protected identity in hours — not months — with zero ops overhead and enterprise compliance built in from day one."</div>
+  </div>
+
+  <div class="section-title">Table-stakes (must-haves) — what every IAM needs</div>
+  <div class="card">
+    <div class="card-grid" style="margin-bottom:0">
+      <ul style="font-size:13px;color:var(--color-text-secondary);padding-left:18px;line-height:1.75">
+        <li>OAuth 2.0 / OpenID Connect (OIDC)</li>
+        <li>Single Sign-On (SSO) — SAML + OIDC</li>
+        <li>Multi-Factor Authentication (MFA)</li>
+        <li>Passwordless / Passkeys (WebAuthn)</li>
+        <li>Role-Based Access Control (RBAC)</li>
+        <li>Attribute-Based Access Control (ABAC)</li>
+      </ul>
+      <ul style="font-size:13px;color:var(--color-text-secondary);padding-left:18px;line-height:1.75">
+        <li>User management &amp; directory</li>
+        <li>SDKs: JS, React, iOS, Android, Python, Go</li>
+        <li>Webhooks &amp; event streaming</li>
+        <li>Audit logs &amp; compliance reports</li>
+        <li>99.99% uptime SLA</li>
+        <li>Social login (Google, GitHub, Apple)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">3 differentiating features that make Fox ID stand out</div>
+
+  <div class="card">
+    <div class="icon-row">
+      <div class="icon-circle ic-blue"><i class="ti ti-layout-kanban" aria-hidden="true"></i></div>
+      <h3>Differentiator 1 — Visual No-Code / Low-Code Auth Flow Builder</h3>
+    </div>
+    <p>Drag-and-drop editor to design login journeys — step-up auth, progressive profiling, custom MFA sequences — without writing a single line of code. Think "Figma for auth flows."</p>
+    <p style="margin-top:8px;font-size:12px;color:var(--color-text-secondary)"><strong style="color:var(--color-text-primary)">Why it wins:</strong> Auth0/Okta require code changes for every flow tweak. Fox ID lets non-engineers ship new auth experiences in minutes. Reduces engineering tickets by ~60%.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon-row">
+      <div class="icon-circle ic-orange"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+      <h3>Differentiator 2 — Real-Time AI Fraud Detection with Behavioral Biometrics</h3>
+    </div>
+    <p>Every login scored in &lt;50ms using ML models analyzing typing rhythm, device fingerprint, geolocation velocity, and session anomalies. Auto-challenge suspicious logins; never block real users.</p>
+    <p style="margin-top:8px;font-size:12px;color:var(--color-text-secondary)"><strong style="color:var(--color-text-primary)">Why it wins:</strong> Competitors bolt on third-party fraud tools (extra cost, latency, data sharing). Fox ID bakes it in — one vendor, one data contract, sub-50ms overhead.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon-row">
+      <div class="icon-circle ic-green"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+      <h3>Differentiator 3 — Built-In Compliance Automation &amp; Data Residency Controls</h3>
+    </div>
+    <p>GDPR, CCPA, SOC 2, ISO 27001, HIPAA-ready controls with one-click audit reports. Choose data residency per tenant (US, EU, APAC). Automated consent management and breach notification workflows.</p>
+    <p style="margin-top:8px;font-size:12px;color:var(--color-text-secondary)"><strong style="color:var(--color-text-primary)">Why it wins:</strong> Enterprise deals stall on compliance. Fox ID ships a compliance package competitors charge $50K+/year for separately. It becomes a deal-closer.</p>
+  </div>
+
+  <div class="section-title">2 high-impact GenAI use cases (beyond chatbots)</div>
+
+  <div class="genai-card genai-1">
+    <h3><i class="ti ti-wand" aria-hidden="true"></i> GenAI Use Case 1 — Natural Language Role &amp; Policy Generator</h3>
+    <p>Admin types a plain English description of a job role. The AI generates RBAC/ABAC policies, simulates access scenarios ("what can a marketing analyst in the EU access?"), and flags over-permissioned roles automatically.</p>
+    <div class="example">"Create least-privilege roles for a junior marketing analyst who works in the EU and needs access to campaign dashboards but not billing data." → Fox AI generates a precise, auditable policy in seconds.</div>
+    <p style="margin-top:8px;font-size:12px"><strong>Business impact:</strong> Eliminates weeks of IAM consulting work. Reduces misconfigured permissions (a top cause of breaches).</p>
+  </div>
+
+  <div class="genai-card genai-2">
+    <h3><i class="ti ti-brain" aria-hidden="true"></i> GenAI Use Case 2 — Predictive Risk Scoring &amp; Auto-Remediation</h3>
+    <p>Continuously analyzes behavioral patterns across all tenant logins. Predicts account compromise before it happens. Automatically steps up authentication, revokes tokens, or alerts security teams based on configurable thresholds.</p>
+    <div class="example">Model detects that a user is logging in at 3 AM from a new country, with a new device, downloading unusual volumes of data → auto-quarantines the session, alerts the CISO, and logs a full forensic trail.</div>
+    <p style="margin-top:8px;font-size:12px"><strong>Business impact:</strong> Average cost of a data breach = $4.5M. This feature directly reduces breach probability — a powerful enterprise sale argument.</p>
+  </div>
+
+  <div class="section-title">Challenges &amp; how we overcome them</div>
+
+  <div class="risk-grid">
+    <div class="risk-card risk-high">
+      <h4>⚠️ Technical: Auth Latency</h4>
+      <p>AI fraud scoring adds processing time. Solution: run scoring async, cache results, set 50ms SLA with circuit breakers to bypass if slow.</p>
+    </div>
+    <div class="risk-card risk-high">
+      <h4>⚠️ Business: Adoption vs Competitors</h4>
+      <p>Auth0/Okta have lock-in. Solution: offer free migration tooling, competitive pricing, and a 30-day paid pilot with white-glove onboarding.</p>
+    </div>
+    <div class="risk-card risk-med">
+      <h4>🔶 Technical: Multi-Tenant Isolation</h4>
+      <p>One tenant's breach can't affect others. Solution: tenant-per-database-schema architecture, row-level security, isolated encryption keys.</p>
+    </div>
+    <div class="risk-card risk-med">
+      <h4>🔶 Operational: Support at Scale</h4>
+      <p>IAM issues = urgent for customers. Solution: tiered SLA (P0 = 15min response), AI-assisted triage, runbooks for top-10 issues.</p>
+    </div>
+    <div class="risk-card risk-low">
+      <h4>🟢 Business: Pricing Complexity</h4>
+      <p>Usage-based billing confuses buyers. Solution: simple tiered pricing with usage estimator tool and spend alerts built into dashboard.</p>
+    </div>
+    <div class="risk-card risk-low">
+      <h4>🟢 Technical: AI Model Drift</h4>
+      <p>Fraud models become stale. Solution: continuous retraining pipeline, A/B testing new models in shadow mode before production rollout.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Legal, privacy &amp; security considerations</div>
+  <div class="legal-grid">
+    <div class="legal-card">
+      <h4>🔒 Data Privacy</h4>
+      <ul>
+        <li>GDPR / CCPA compliance</li>
+        <li>Data minimization by design</li>
+        <li>Right to erasure (delete flows)</li>
+        <li>Consent management</li>
+        <li>Privacy Impact Assessments</li>
+      </ul>
+    </div>
+    <div class="legal-card">
+      <h4>🛡️ Security</h4>
+      <ul>
+        <li>AES-256 at rest, TLS 1.3 in transit</li>
+        <li>Tenant-isolated encryption keys</li>
+        <li>Zero-trust architecture</li>
+        <li>SOC 2 Type II, ISO 27001</li>
+        <li>Penetration testing quarterly</li>
+      </ul>
+    </div>
+    <div class="legal-card">
+      <h4>⚖️ Legal / Compliance</h4>
+      <ul>
+        <li>Data Processing Agreements (DPAs)</li>
+        <li>Sub-processor transparency</li>
+        <li>72-hour breach notification (GDPR)</li>
+        <li>Audit log retention (7 years)</li>
+        <li>HIPAA BAA available</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="slide-admin" class="slide">
+  <div class="section-title">Part 2 — Admin Portal: Features &amp; Prioritization</div>
+
+  <div class="card" style="margin-bottom:16px">
+    <p style="font-size:13px;color:var(--color-text-secondary)">The admin portal is the control center for CTOs and developers. It must be intuitive, API-first, and powerful enough to handle enterprise complexity without a manual.</p>
+  </div>
+
+  <div class="section-title">Prioritization framework (P1 → P4)</div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="priority-row">
+      <div class="priority-num p1">P1</div>
+      <div class="info"><h4>Must ship at launch (MVP)</h4><p>Core value delivery — without these, the product doesn't work</p></div>
+    </div>
+    <div class="priority-row">
+      <div class="priority-num p2">P2</div>
+      <div class="info"><h4>Ship in first 90 days</h4><p>Drives retention and expansion revenue</p></div>
+    </div>
+    <div class="priority-row">
+      <div class="priority-num p3">P3</div>
+      <div class="info"><h4>6-month roadmap</h4><p>Competitive differentiation</p></div>
+    </div>
+    <div class="priority-row">
+      <div class="priority-num p4">P4</div>
+      <div class="info"><h4>Future / enterprise add-ons</h4><p>Premium tier features</p></div>
+    </div>
+  </div>
+
+  <div class="section-title">Admin portal features — with the "why"</div>
+
+  <div class="card">
+    <div class="admin-feature">
+      <div class="admin-icon">📊</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p1" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P1</span> Dashboard Overview</h4>
+        <p>Real-time metrics: MAU, daily active users, login success/failure rates, fraud alerts, top error codes. Sparkline trends, drill-down by application.</p>
+        <div class="why">Why: First screen every CTO opens. If they can't see health instantly, trust erodes. Reduces support tickets by making self-diagnosis easy.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">🔑</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p1" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P1</span> Application Setup &amp; Quick-Start Wizard</h4>
+        <p>Guided 5-step wizard: create app → choose login method → copy SDK snippet → test login → go live. Copy-paste SDK code with language switcher (JS, Python, Go, etc.).</p>
+        <div class="why">Why: Time-to-first-auth is the most important activation metric. If a dev can't test a working login in under 10 minutes, they churn. Target: &lt;5 min integration.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">👥</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p1" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P1</span> User Management</h4>
+        <p>Search, filter, view, edit, and delete users. Force password reset, lock/unlock accounts, view login history, impersonate (with audit trail). Bulk operations via CSV import/export.</p>
+        <div class="why">Why: Customer support teams spend 40% of time on user account issues. Self-service user management eliminates most of these tickets and gives tenants control.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">🎭</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p1" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P1</span> Roles &amp; Permissions (RBAC)</h4>
+        <p>Visual role builder: create roles, assign permissions, set scope (tenant-wide vs app-specific). Show role hierarchy and inheritance. Preview: "what can this user do?"</p>
+        <div class="why">Why: RBAC misconfiguration is the #1 cause of internal data breaches. A visual tool reduces errors. AI policy suggestions (GenAI feature) layer on top of this.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">🔐</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p2" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P2</span> Authentication Config</h4>
+        <p>Enable/disable: social logins, MFA methods, passwordless, passkeys. Set session duration, token expiry, device trust rules. Visual auth flow builder (the drag-and-drop differentiator).</p>
+        <div class="why">Why: Every tenant has different security needs. Flexibility here is a key selling point for enterprises who need custom auth journeys per user segment.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">🛡️</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p2" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P2</span> Security &amp; Fraud Monitor</h4>
+        <p>Live feed of suspicious logins. Risk score breakdown per login event. Block/allow lists for IPs and devices. Configure auto-challenge thresholds. Anomaly trend charts over time.</p>
+        <div class="why">Why: Security teams need actionable visibility, not raw logs. This dashboard turns our AI fraud detection into a product — tenants see the value every day.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">📋</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p2" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P2</span> Audit Logs &amp; Compliance Reports</h4>
+        <p>Tamper-proof, searchable audit trail of every admin action and login event. One-click export to PDF/CSV for compliance audits. Pre-built SOC 2, GDPR, HIPAA report templates.</p>
+        <div class="why">Why: Enterprise customers require audit logs for compliance. This directly unblocks deals with financial services, healthcare, and government sectors.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">🔌</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p3" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P3</span> Integrations &amp; Webhooks</h4>
+        <p>One-click integrations: Slack alerts, PagerDuty, Datadog, SIEM tools. Webhook builder with retry logic and delivery history. API key management with scoped permissions.</p>
+        <div class="why">Why: Tenants want Fox ID to fit their existing toolchain. Integrations increase stickiness — the more systems connected, the higher the switching cost.</div>
+      </div>
+    </div>
+    <div class="admin-feature">
+      <div class="admin-icon">🤖</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p3" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P3</span> AI Assistant (Fox AI)</h4>
+        <p>Natural language policy generator, access review recommendations, anomaly explanation in plain English. "Your CEO account was flagged because it logged in from 3 countries in 2 hours."</p>
+        <div class="why">Why: This is the GenAI differentiator made visible. It turns complex IAM data into actionable insights for non-technical admins. Drives upsell to Pro tier.</div>
+      </div>
+    </div>
+    <div class="admin-feature" style="border-bottom:none">
+      <div class="admin-icon">💰</div>
+      <div class="admin-body">
+        <h4><span class="priority-num p4" style="width:20px;height:20px;font-size:10px;display:inline-flex;margin-right:6px">P4</span> Billing &amp; Usage</h4>
+        <p>Real-time MAU counter, usage against plan limits, spend forecast, invoice history, plan upgrade flow. Usage alerts at 80% and 95% of limits.</p>
+        <div class="why">Why: Spend surprises cause churn. Transparent billing with proactive alerts builds trust and reduces billing-related support tickets by ~70%.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BILLING -->
+<div id="slide-billing" class="slide">
+  <div class="section-title">Part 3 — Billing Architecture &amp; Monetization</div>
+
+  <div class="card" style="margin-bottom:14px">
+    <p style="font-size:13px;color:var(--color-text-secondary)">The golden rule: <strong style="color:var(--color-text-primary)">billing must never touch the auth critical path.</strong> A slow billing check = a slow login = lost users. All usage tracking is async, non-blocking.</p>
+  </div>
+
+  <div class="section-title">Option A — Monthly Active Users (MAU)</div>
+  <div class="billing-option">
+    <div class="billing-header" onclick="toggle('mau')">
+      <h3>💡 MAU Billing — charge per unique user who logs in each month</h3>
+      <span id="mau-icon">▼</span>
+    </div>
+    <div class="billing-body" id="mau">
+      <div class="pro-con">
+        <div class="pros"><h4>✅ Pros</h4><ul>
+          <li>Aligns cost with actual value delivered</li>
+          <li>Easy for customers to predict spend</li>
+          <li>Auth0's model — customers understand it</li>
+          <li>Scales naturally with customer growth</li>
+        </ul></div>
+        <div class="cons"><h4>❌ Cons</h4><ul>
+          <li>Penalizes seasonal/bursty businesses</li>
+          <li>Unclear for B2B (one human = many sessions)</li>
+          <li>Customers game it (delayed login = not counted)</li>
+          <li>Hard to predict revenue for Fox ID</li>
+        </ul></div>
+      </div>
+      <p style="font-size:12px;color:var(--color-text-secondary);margin-top:10px"><strong>Best for:</strong> B2C apps with steady monthly usage patterns (e.g., streaming, fintech apps)</p>
+    </div>
+  </div>
+
+  <div class="section-title">Option B — Per-Transaction / Per-Authentication</div>
+  <div class="billing-option">
+    <div class="billing-header" onclick="toggle('txn')">
+      <h3>🔄 Per-Transaction — charge per login / auth event</h3>
+      <span id="txn-icon">▼</span>
+    </div>
+    <div class="billing-body" id="txn">
+      <div class="pro-con">
+        <div class="pros"><h4>✅ Pros</h4><ul>
+          <li>Pure pay-as-you-go fairness</li>
+          <li>Good for low-frequency enterprise apps</li>
+          <li>Easy to meter and report on</li>
+        </ul></div>
+        <div class="cons"><h4>❌ Cons</h4><ul>
+          <li>Token refresh storms can inflate costs</li>
+          <li>Customers over-optimize (reduce re-auth)</li>
+          <li>Unpredictable for customers = scary</li>
+          <li>Incentivizes longer session tokens (security risk!)</li>
+        </ul></div>
+      </div>
+      <p style="font-size:12px;color:var(--color-text-secondary);margin-top:10px"><strong>Critical flaw:</strong> Per-auth billing can incentivize customers to use dangerously long session tokens to reduce costs — a serious security anti-pattern.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Option C — Tiered Flat Subscription</div>
+  <div class="billing-option">
+    <div class="billing-header" onclick="toggle('tier')">
+      <h3>📦 Tiered Subscription — fixed monthly fee by plan size</h3>
+      <span id="tier-icon">▼</span>
+    </div>
+    <div class="billing-body" id="tier">
+      <div class="pro-con">
+        <div class="pros"><h4>✅ Pros</h4><ul>
+          <li>Predictable for customers and Fox ID</li>
+          <li>Simple to explain and sell</li>
+          <li>Easier enterprise procurement approval</li>
+        </ul></div>
+        <div class="cons"><h4>❌ Cons</h4><ul>
+          <li>Doesn't capture upside when customers grow</li>
+          <li>Over-provisioning — customer pays for idle capacity</li>
+          <li>Hard to set the right tier boundaries</li>
+          <li>Requires expensive migrations as tiers change</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:16px">⭐ Our Recommendation — Hybrid Model</div>
+
+  <div class="recommended-banner">
+    <h3>Hybrid: Tiered Base + MAU Overages + Feature Add-Ons</h3>
+    <p>Combines predictability (subscription) with fair scaling (MAU overages). Enterprise gets custom contracts. Free tier drives developer adoption.</p>
+  </div>
+
+  <table class="table">
+    <tr><th>Tier</th><th>Price</th><th>MAU Included</th><th>Overage</th><th>Key features</th></tr>
+    <tr><td><strong>Free</strong></td><td>$0</td><td>7,500 MAU</td><td>N/A (hard limit)</td><td>Core auth, 2 social logins, basic logs</td></tr>
+    <tr><td><strong>Startup</strong></td><td>$99/mo</td><td>25,000 MAU</td><td>$0.005/MAU</td><td>MFA, RBAC, webhooks, basic fraud detection</td></tr>
+    <tr><td><strong>Growth</strong></td><td>$399/mo</td><td>100,000 MAU</td><td>$0.004/MAU</td><td>SSO, audit logs, compliance reports, AI features</td></tr>
+    <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Unlimited</td><td>Volume discount</td><td>Custom SLA, data residency, dedicated support, HIPAA BAA</td></tr>
+  </table>
+
+  <div class="section-title">How billing stays off the critical auth path</div>
+
+  <div class="flow-steps">
+    <div class="flow-step"><div class="fs-num">1</div><div class="fs-label">User logs in</div></div>
+    <div class="flow-step"><div class="fs-num">2</div><div class="fs-label">Auth completes instantly</div></div>
+    <div class="flow-step"><div class="fs-num">3</div><div class="fs-label">Event emitted to queue (Kafka)</div></div>
+    <div class="flow-step"><div class="fs-num">4</div><div class="fs-label">Billing service consumes async</div></div>
+    <div class="flow-step"><div class="fs-num">5</div><div class="fs-label">MAU counter updated</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:8px">Key technical decisions</h3>
+    <ul>
+      <li style="font-size:13px;color:var(--color-text-secondary);margin-bottom:6px;line-height:1.55"><strong style="color:var(--color-text-primary)">Async event streaming:</strong> Auth events go into a Kafka topic. Billing service consumes at its own pace. Zero latency impact on login.</li>
+      <li style="font-size:13px;color:var(--color-text-secondary);margin-bottom:6px;line-height:1.55"><strong style="color:var(--color-text-primary)">Idempotency:</strong> Each auth event has a unique ID. Billing service deduplicates — no double-counting even if events are replayed.</li>
+      <li style="font-size:13px;color:var(--color-text-secondary);margin-bottom:6px;line-height:1.55"><strong style="color:var(--color-text-primary)">Spend alerts:</strong> Alert customers at 80% and 95% of MAU quota. Auto-email + in-portal banner. Reduces surprise overage churn.</li>
+      <li style="font-size:13px;color:var(--color-text-secondary);line-height:1.55"><strong style="color:var(--color-text-primary)">Grace period:</strong> Don't hard-cut off at MAU limit. Allow 15-day grace period with auto-upgrade prompt. Never interrupt a user's login experience.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Success metrics</div>
+  <div class="metric-row">
+    <div class="metric"><div class="val">&lt;5 min</div><div class="lbl">Time to first auth</div></div>
+    <div class="metric"><div class="val">99.99%</div><div class="lbl">Uptime SLA</div></div>
+    <div class="metric"><div class="val">&lt;50ms</div><div class="lbl">Auth + fraud check</div></div>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div id="slide-questions" class="slide">
+  <div class="section-title">Interview Q&amp;A — every question they might ask</div>
+
+  <div class="card" style="margin-bottom:14px">
+    <p style="font-size:13px;color:var(--color-text-secondary)">Click any question to see the ideal answer. Practice these out loud before your presentation.</p>
+  </div>
+
+  <div class="section-title">Part 1 — Core &amp; Strategy questions</div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "Why would a company pick Fox ID over Auth0?"</h4>
+    <p>Auth0 is excellent but gets expensive at scale (costs can 5x between 10K and 100K MAU). Fox ID is cheaper at scale, includes AI fraud detection and compliance tools that Auth0 charges extra for, and ships a visual flow builder Auth0 doesn't have. Our target customer is a growth-stage startup that will outgrow Auth0 within 18 months but doesn't want to build in-house.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "What is your USP and how is it defensible?"</h4>
+    <p>Our USP is being AI-native from day one — not bolting AI onto an existing product. Every login generates behavioral data that feeds our fraud models. Over time, our models get smarter than any competitor who starts later. That's a data moat. Plus, our compliance automation (GDPR, SOC 2) is built-in — it takes competitors months and a consulting engagement to replicate.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "What are the 3 must-have table-stakes features?"</h4>
+    <p>OAuth 2.0 / OIDC (industry standard, required for SSO), MFA/passwordless (now table-stakes for security-conscious buyers), and a robust SDK ecosystem (JS, mobile, backend). Without these three, you cannot get a single enterprise customer. Everything else is differentiation.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "How would the AI fraud detection actually work technically?"</h4>
+    <p>At login, we collect signals: typing speed, device fingerprint, IP reputation, geo-velocity (impossible travel), time of day vs historical pattern. These go into a lightweight ML model (a gradient-boosted classifier) that returns a risk score in &lt;20ms. If score &gt; threshold, we trigger step-up auth (ask for MFA). The model is tenant-specific after a warm-up period. All inference is on-device or in our inference cluster — we never share behavioral data across tenants.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "What are the two GenAI use cases and why are they high-impact?"</h4>
+    <p>First: Natural Language Policy Generator. IAM policy misconfiguration is the #1 internal threat vector. If we can let an admin type "create least-privilege access for a junior analyst" and get a precise, auditable policy — we save weeks of work and reduce breach risk simultaneously. Second: Predictive Risk Scoring. The average breach costs $4.5M. If our AI can flag a compromised account 2 hours before the attacker acts, we've delivered enormous value. Both are deeply tied to the platform's core data (auth events) — not generic AI layered on top.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "What legal/compliance risks should we be aware of?"</h4>
+    <p>Three big ones: (1) GDPR — we process PII for EU users, so we need DPAs with every tenant, data residency controls, and right-to-erasure that cascades through all data stores. (2) Sub-processor risk — every vendor we use (AWS, Kafka, etc.) must have their own compliance certifications. (3) Breach notification — GDPR requires 72-hour notification to regulators. We need an incident response playbook that can trigger this automatically. We should also get HIPAA BAA capability for healthcare customers — it's a premium feature but unlocks a huge market.</p>
+  </div>
+
+  <div class="section-title">Part 2 — Admin Portal questions</div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "How did you prioritize the admin portal features?"</h4>
+    <p>I used a P1-P4 framework based on two axes: customer value (does this block adoption or retention?) and business impact (does this drive revenue or reduce cost?). P1 features are those where their absence would cause immediate churn — dashboard, user management, RBAC, quick-start wizard. P2 features drive stickiness. P3 features are our competitive differentiators. P4 are enterprise premium add-ons. I would validate this ordering with customer interviews — specifically asking "what would make you cancel your subscription?" and "what would make you upgrade?"</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "Why is the quick-start wizard P1?"</h4>
+    <p>Time-to-first-auth is the #1 activation metric for developer tools. If a developer can't get a working login in under 10 minutes, they will abandon and try a competitor. The wizard removes every decision point — no reading docs, no choosing configs. It's the product equivalent of "hello world." Auth0 found that developers who complete their quick-start are 4x more likely to convert to paid. We should target &lt;5 minutes to first working login.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "Who is the primary user of the admin portal?"</h4>
+    <p>Two personas: (1) The Developer — integrating Fox ID into their app, needs SDKs, API keys, test environments, quick-start flows. Values: speed, clear docs, no magic. (2) The Security Admin / CTO — managing ongoing operations, needs audit logs, user management, fraud alerts, compliance reports. Values: control, visibility, compliance. The portal must serve both without one cluttering the other. We'd use role-based views — a "Developer mode" and an "Admin mode."</p>
+  </div>
+
+  <div class="section-title">Part 3 — Billing questions</div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "Why did you recommend a hybrid billing model?"</h4>
+    <p>Pure MAU is unpredictable for both sides — customers get surprised by bills, we get surprised by revenue swings. Pure per-transaction creates perverse incentives (customers extend session tokens for security reasons). Pure subscription doesn't capture growth upside. The hybrid — base subscription (predictable) + MAU overages (fair scaling) — gives customers a safe floor and Fox ID a growth lever. Stripe and Twilio use this exact model successfully.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "How do you ensure billing doesn't slow down the login flow?"</h4>
+    <p>The auth critical path must be completely decoupled from billing. Here's how: when a user logs in, the auth service issues the token immediately — no billing check. It simultaneously emits an event to a Kafka topic. The billing service consumes this asynchronously, updates counters, and checks quota. If a tenant is over quota, we don't cut them off in real-time (that would break their users' experience). Instead, we send alerts at 80% and 95% usage, and allow a 15-day grace period before enforcing limits. The login latency impact of our billing system = 0ms.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "What's the free tier strategy?"</h4>
+    <p>Free tier is a customer acquisition channel, not charity. 7,500 MAU is enough for any startup to build and launch their product. When they succeed and grow past 7,500 MAU — which is the goal — they naturally upgrade. We make upgrading a celebration ("You've grown! Upgrade to keep the momentum going"), not a punishment. Free tier also serves as a test environment for paid customers. Key metric to track: free-to-paid conversion rate. Industry benchmark for PLG IAM tools is 3-8%; we should target 6%+.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "How would you handle a customer who suddenly 10x's their MAU in one month?"</h4>
+    <p>This is actually the best problem to have — it means their product is going viral. We should never break their login experience. Our system allows a 15-day grace period. Within the first 48 hours of hitting quota, an automated system sends a congratulatory email ("Your app is growing fast! Here's a one-click upgrade to Growth plan with no service interruption"). We assign a dedicated success manager for Enterprise-tier candidates. The goal: convert this into an upgrade, not a support ticket. Proactive outreach at 80% quota is non-negotiable.</p>
+  </div>
+
+  <div class="section-title">Bonus — tough curveball questions</div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "What's the biggest risk to Fox ID's success?"</h4>
+    <p>Honest answer: trust. IAM is the most security-sensitive part of any application. One public breach linked to Fox ID could be fatal to the business. Our #1 priority must be security — not features. We should publish our security posture transparently (like Stripe does), invest in bug bounties early, and get SOC 2 Type II before we touch enterprise. A security incident in year one kills year two. This is why I'd push for quarterly pen tests, not annual.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "How would you measure success of the admin portal?"</h4>
+    <p>Three metrics: (1) Activation — % of new tenants who complete quick-start within 24 hours (target: 70%). (2) Retention — weekly active admin portal users per tenant (healthy signal = at least one user per week). (3) Support deflection — % of common issues resolved self-service vs support ticket (target: 80% self-service). I'd also track NPS scores specifically from CTOs and developers separately — they have very different needs and the portal must serve both.</p>
+  </div>
+
+  <div class="q-box" onclick="toggleQ(this)">
+    <h4><span class="toggle">+</span> "If you had to cut the scope by 50%, what would you keep?"</h4>
+    <p>Keep everything P1: dashboard, quick-start wizard, user management, RBAC. These are the 20% of features that deliver 80% of value. Cut: AI assistant (P3), integrations (P3), advanced fraud analytics (P2 — keep the basic version), compliance reports (P2 — ship as downloadable raw logs). The goal of an MVP is to validate that customers will pay for Fox ID at all — not to match every Auth0 feature. Ship fast, learn, iterate.</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  document.getElementById('slide-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggle(id) {
+  const body = document.getElementById(id);
+  const icon = document.getElementById(id+'-icon');
+  const isOpen = body.classList.toggle('open');
+  icon.textContent = isOpen ? '▲' : '▼';
+}
+function toggleQ(el) {
+  el.classList.toggle('open');
+  el.querySelector('.toggle').textContent = el.classList.contains('open') ? '−' : '+';
+}
+</script>
