@@ -82,7 +82,6 @@ body {
   background: var(--color-background-primary);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  overflow: hidden;
 }
 
 .nav {
@@ -96,6 +95,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
 }
 
 .nav-pills {
@@ -726,7 +727,6 @@ body {
   margin-bottom: 16px;
   border: 1px solid;
   position: relative;
-  overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
 
@@ -773,6 +773,10 @@ body {
   color: inherit;
   display: inline-block;
   font-weight: 500;
+}
+
+.pm-tooltip:hover {
+  z-index: 9999;
 }
 
 .pm-tooltip .tooltip-text {
