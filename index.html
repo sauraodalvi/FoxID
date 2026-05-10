@@ -1201,7 +1201,7 @@ body {
 
   <table class="table">
     <tr><th>Tier</th><th>Price</th><th>MAU Included</th><th>Overage</th><th>Key features</th></tr>
-    <tr><td><strong>Free</strong></td><td>$0</td><td>7,500 MAU</td><td>N/A (hard limit)</td><td>Core auth, 2 social logins, basic logs</td></tr>
+    <tr><td><strong>Free</strong></td><td>$0</td><td>7,500 MAU</td><td>Soft limit (grace period)</td><td>Core auth, 2 social logins, basic logs</td></tr>
     <tr><td><strong>Startup</strong></td><td>$99/mo</td><td>25,000 MAU</td><td>$0.005/MAU</td><td>MFA, RBAC, webhooks, basic fraud detection</td></tr>
     <tr><td><strong>Growth</strong></td><td>$399/mo</td><td>100,000 MAU</td><td>$0.004/MAU</td><td>SSO, audit logs, compliance reports, AI features</td></tr>
     <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Unlimited</td><td>Volume discount</td><td>Custom SLA, data residency, dedicated support, HIPAA BAA</td></tr>
@@ -1228,11 +1228,28 @@ body {
   </div>
 
   <div class="section-title">Success metrics</div>
-  <div class="metric-row">
-    <div class="metric"><div class="val">&lt;5 min</div><div class="lbl">Time to first auth</div></div>
-    <div class="metric"><div class="val">99.99%</div><div class="lbl">Uptime SLA</div></div>
-    <div class="metric"><div class="val">&lt;50ms</div><div class="lbl">Auth + fraud check</div></div>
-  </div>
+  <table class="table">
+    <tr>
+      <th>Metric name</th>
+      <th>How to calculate it</th>
+      <th>Why we use it</th>
+    </tr>
+    <tr>
+      <td><strong>Time to first auth</strong> (&lt;5 min)</td>
+      <td>Time elapsed from account creation to a successful test login via the SDK.</td>
+      <td>Core activation metric for developers; fast integration is critical to prevent churn.</td>
+    </tr>
+    <tr>
+      <td><strong>Uptime SLA</strong> (99.99%)</td>
+      <td>Percentage of total time the authentication service is operational.</td>
+      <td>Auth is on the critical path; high reliability is essential for enterprise trust.</td>
+    </tr>
+    <tr>
+      <td><strong>Auth + fraud check</strong> (&lt;50ms)</td>
+      <td>Total processing time from receiving a login request to returning the response.</td>
+      <td>Ensures real-time AI security checks don't degrade the end-user login experience.</td>
+    </tr>
+  </table>
 </div>
 
 <!-- QUESTIONS -->
