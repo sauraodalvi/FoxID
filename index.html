@@ -766,6 +766,60 @@ body {
 .genai-1 .example { color: var(--color-text-info); border-color: var(--color-border-info); }
 .genai-2 .example { color: var(--purple); border-color: #E9D8FD; }
 
+.pm-tooltip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted var(--color-text-info);
+  color: inherit;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.pm-tooltip .tooltip-text {
+  visibility: hidden;
+  width: 280px;
+  background-color: var(--navy);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 12px 16px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+.pm-tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--navy) transparent transparent transparent;
+}
+
+.pm-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pm-tooltip-analogy {
+  display: block;
+  font-weight: 700;
+  color: var(--mint);
+  margin-bottom: 4px;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -871,16 +925,16 @@ body {
   <div class="card">
     <div class="card-grid" style="margin-bottom:0">
       <ul style="font-size:13px;color:var(--color-text-secondary);padding-left:18px;line-height:1.75">
-        <li>OAuth 2.0 / OpenID Connect (OIDC)</li>
-        <li>Single Sign-On (SSO) — SAML + OIDC</li>
-        <li>Multi-Factor Authentication (MFA)</li>
+        <li><span class="pm-tooltip">OAuth 2.0<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The Valet Key 🚗</span>You give the valet a key that only drives the car, but doesn't open the trunk or glovebox. It grants an app limited access without giving away your password.</span></span> / <span class="pm-tooltip">OpenID Connect (OIDC)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The ID Badge 🪪</span>Like showing your driver's license to prove who you are. It sits on top of OAuth to verify identity.</span></span></li>
+        <li><span class="pm-tooltip">Single Sign-On (SSO)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Theme Park Wristband 🎢</span>Show your wristband once at the entrance, and you can get on any ride without paying or showing ID again.</span></span> — <span class="pm-tooltip">SAML<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Corporate ID Card 🏢</span>An older, heavier enterprise standard for SSO, like a company badge that gets you into specific corporate buildings.</span></span> + OIDC</li>
+        <li><span class="pm-tooltip">Multi-Factor Authentication (MFA)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Two Locks 🔒</span>A deadbolt (password) and a chain (phone code). If someone steals your key, they still can't get in without the chain.</span></span></li>
         <li>Passwordless / Passkeys (WebAuthn)</li>
-        <li>Role-Based Access Control (RBAC)</li>
+        <li><span class="pm-tooltip">Role-Based Access Control (RBAC)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: VIP Access Levels 🎟️</span>General admission gets the floor, VIP gets backstage. It defines who can do what based on their job title.</span></span></li>
         <li>Attribute-Based Access Control (ABAC)</li>
       </ul>
       <ul style="font-size:13px;color:var(--color-text-secondary);padding-left:18px;line-height:1.75">
         <li>User management &amp; directory</li>
-        <li>SDKs: JS, React, iOS, Android, Python, Go</li>
+        <li><span class="pm-tooltip">SDKs<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Pre-built Lego Sets 🧱</span>Tools we give developers so they don't have to build login buttons from scratch—they just snap our pieces into their app.</span></span>: JS, React, iOS, Android, Python, Go</li>
         <li>Webhooks &amp; event streaming</li>
         <li>Audit logs &amp; compliance reports</li>
         <li>99.99% uptime SLA</li>
@@ -1212,7 +1266,7 @@ body {
   <div class="flow-steps">
     <div class="flow-step"><div class="fs-num">1</div><div class="fs-label">User logs in</div></div>
     <div class="flow-step"><div class="fs-num">2</div><div class="fs-label">Auth completes instantly</div></div>
-    <div class="flow-step"><div class="fs-num">3</div><div class="fs-label">Event emitted to queue (Kafka)</div></div>
+    <div class="flow-step"><div class="fs-num">3</div><div class="fs-label">Event emitted to queue (<span class="pm-tooltip">Kafka<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: High-Speed Conveyor Belt 🏭</span>It takes millions of events (like logins) and smoothly delivers them to the billing department without slowing down the front door.</span></span>)</div></div>
     <div class="flow-step"><div class="fs-num">4</div><div class="fs-label">Billing service consumes async</div></div>
     <div class="flow-step"><div class="fs-num">5</div><div class="fs-label">MAU counter updated</div></div>
   </div>
@@ -1289,7 +1343,7 @@ body {
 
   <div class="q-box" onclick="toggleQ(this)">
     <h4><span class="toggle">+</span> "What legal/compliance risks should we be aware of?"</h4>
-    <p>Three big ones: (1) GDPR — we process PII for EU users, so we need DPAs with every tenant, data residency controls, and right-to-erasure that cascades through all data stores. (2) Sub-processor risk — every vendor we use (AWS, Kafka, etc.) must have their own compliance certifications. (3) Breach notification — GDPR requires 72-hour notification to regulators. We need an incident response playbook that can trigger this automatically. We should also get HIPAA BAA capability for healthcare customers — it's a premium feature but unlocks a huge market.</p>
+    <p>Three big ones: (1) <span class="pm-tooltip">GDPR<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Strict Privacy Bouncer 🇪🇺</span>European rules that dictate exactly how you can handle someone's data. If you mess up, the fines are massive.</span></span> — we process PII for EU users, so we need DPAs with every tenant, data residency controls, and right-to-erasure that cascades through all data stores. (2) Sub-processor risk — every vendor we use (AWS, Kafka, etc.) must have their own compliance certifications. (3) Breach notification — GDPR requires 72-hour notification to regulators. We need an incident response playbook that can trigger this automatically. We should also get HIPAA BAA capability for healthcare customers — it's a premium feature but unlocks a huge market.</p>
   </div>
 
   <div class="section-title">Part 2 — Admin Portal questions</div>
