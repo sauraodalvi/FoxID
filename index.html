@@ -928,17 +928,17 @@ body {
         <li><span class="pm-tooltip">OAuth 2.0<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The Valet Key 🚗</span>You give the valet a key that only drives the car, but doesn't open the trunk or glovebox. It grants an app limited access without giving away your password.</span></span> / <span class="pm-tooltip">OpenID Connect (OIDC)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The ID Badge 🪪</span>Like showing your driver's license to prove who you are. It sits on top of OAuth to verify identity.</span></span></li>
         <li><span class="pm-tooltip">Single Sign-On (SSO)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Theme Park Wristband 🎢</span>Show your wristband once at the entrance, and you can get on any ride without paying or showing ID again.</span></span> — <span class="pm-tooltip">SAML<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Corporate ID Card 🏢</span>An older, heavier enterprise standard for SSO, like a company badge that gets you into specific corporate buildings.</span></span> + OIDC</li>
         <li><span class="pm-tooltip">Multi-Factor Authentication (MFA)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Two Locks 🔒</span>A deadbolt (password) and a chain (phone code). If someone steals your key, they still can't get in without the chain.</span></span></li>
-        <li>Passwordless / Passkeys (WebAuthn)</li>
+        <li><span class="pm-tooltip">Passwordless / Passkeys (WebAuthn)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Fingerprint Scanner 👆</span>Like using your thumb to unlock your phone instead of typing a PIN. It uses your device to prove who you are.</span></span></li>
         <li><span class="pm-tooltip">Role-Based Access Control (RBAC)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: VIP Access Levels 🎟️</span>General admission gets the floor, VIP gets backstage. It defines who can do what based on their job title.</span></span></li>
-        <li>Attribute-Based Access Control (ABAC)</li>
+        <li><span class="pm-tooltip">Attribute-Based Access Control (ABAC)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Bouncer's Checklist 📋</span>Instead of just checking your VIP status (RBAC), it checks if you're over 21, wearing a tie, and it's before 10 PM. Access depends on multiple conditions.</span></span></li>
       </ul>
       <ul style="font-size:13px;color:var(--color-text-secondary);padding-left:18px;line-height:1.75">
-        <li>User management &amp; directory</li>
+        <li><span class="pm-tooltip">User management & directory<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Digital Rolodex 📇</span>A central address book where you can see every user, change their details, or revoke their access instantly.</span></span></li>
         <li><span class="pm-tooltip">SDKs<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Pre-built Lego Sets 🧱</span>Tools we give developers so they don't have to build login buttons from scratch—they just snap our pieces into their app.</span></span>: JS, React, iOS, Android, Python, Go</li>
-        <li>Webhooks &amp; event streaming</li>
-        <li>Audit logs &amp; compliance reports</li>
-        <li>99.99% uptime SLA</li>
-        <li>Social login (Google, GitHub, Apple)</li>
+        <li><span class="pm-tooltip">Webhooks & event streaming<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Live News Ticker 📰</span>Instead of constantly calling to ask "did anyone log in?", Fox ID sends a live breaking news alert to your app the second a login happens.</span></span></li>
+        <li><span class="pm-tooltip">Audit logs & compliance reports<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Security Camera Footage 📹</span>An un-erasable record of exactly who did what and when, packaged neatly so auditors (inspectors) can review it easily.</span></span></li>
+        <li><span class="pm-tooltip">99.99% uptime SLA<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Always Open 24/7 🏪</span>A guarantee that the front door to your app will almost never be locked. 99.99% means we are allowed less than 5 minutes of downtime a month.</span></span></li>
+        <li><span class="pm-tooltip">Social login (Google, GitHub, Apple)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Using Your Driver's License at a Bar 🪪</span>Instead of making a new ID for every place you visit, you use a trusted ID you already have.</span></span></li>
       </ul>
     </div>
   </div>
@@ -975,14 +975,14 @@ body {
   <div class="section-title">2 high-impact GenAI use cases (beyond chatbots)</div>
 
   <div class="genai-card genai-1">
-    <h3><i class="ti ti-wand" aria-hidden="true"></i> GenAI Use Case 1 — Natural Language Role &amp; Policy Generator</h3>
+    <h3><i class="ti ti-wand" aria-hidden="true"></i> GenAI Use Case 1 — <span class="pm-tooltip">Natural Language Role & Policy Generator<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Talking to an Expert 🗣️</span>Instead of writing complex code, you just tell the AI what you want in plain English, and it writes the technical rules for you.</span></span></h3>
     <p>Admin types a plain English description of a job role. The AI generates RBAC/ABAC policies, simulates access scenarios ("what can a marketing analyst in the EU access?"), and flags over-permissioned roles automatically.</p>
     <div class="example">"Create least-privilege roles for a junior marketing analyst who works in the EU and needs access to campaign dashboards but not billing data." → Fox AI generates a precise, auditable policy in seconds.</div>
     <p style="margin-top:8px;font-size:12px"><strong>Business impact:</strong> Eliminates weeks of IAM consulting work. Reduces misconfigured permissions (a top cause of breaches).</p>
   </div>
 
   <div class="genai-card genai-2">
-    <h3><i class="ti ti-brain" aria-hidden="true"></i> GenAI Use Case 2 — Predictive Risk Scoring &amp; Auto-Remediation</h3>
+    <h3><i class="ti ti-brain" aria-hidden="true"></i> GenAI Use Case 2 — <span class="pm-tooltip">Predictive Risk Scoring & Auto-Remediation<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Pre-crime Detective 🕵️‍♂️</span>It spots the warning signs of a hacker *before* they break in, and automatically locks the door if things look suspicious.</span></span></h3>
     <p>Continuously analyzes behavioral patterns across all tenant logins. Predicts account compromise before it happens. Automatically steps up authentication, revokes tokens, or alerts security teams based on configurable thresholds.</p>
     <div class="example">Model detects that a user is logging in at 3 AM from a new country, with a new device, downloading unusual volumes of data → auto-quarantines the session, alerts the CISO, and logs a full forensic trail.</div>
     <p style="margin-top:8px;font-size:12px"><strong>Business impact:</strong> Average cost of a data breach = $4.5M. This feature directly reduces breach probability — a powerful enterprise sale argument.</p>
@@ -992,27 +992,27 @@ body {
 
   <div class="risk-grid">
     <div class="risk-card risk-high">
-      <h4>⚠️ Technical: Auth Latency</h4>
-      <p>AI fraud scoring adds processing time. Solution: run scoring async, cache results, set 50ms SLA with circuit breakers to bypass if slow.</p>
+      <h4>⚠️ Technical: <span class="pm-tooltip">Auth Latency<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Traffic Jam at the Door 🚦</span>If fraud checks take too long, users get stuck waiting to log in. We keep the checks so fast they don't even notice them.</span></span></h4>
+      <p>AI fraud scoring adds processing time. Solution: <span class="pm-tooltip">run scoring async, cache results, set 50ms SLA with circuit breakers<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Express Checkout Lane 🛒</span>We do the heavy lifting in the background, remember returning users, and if the system gets slow, we just let people through rather than block everyone.</span></span> to bypass if slow.</p>
     </div>
     <div class="risk-card risk-high">
       <h4>⚠️ Business: Adoption vs Competitors</h4>
-      <p>Auth0/Okta have lock-in. Solution: offer free migration tooling, competitive pricing, and a 30-day paid pilot with white-glove onboarding.</p>
+      <p>Auth0/Okta have <span class="pm-tooltip">lock-in<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Golden Handcuffs ⛓️</span>When it's so painful and expensive to leave a vendor that you stay even if you hate the product.</span></span>. Solution: offer free migration tooling, competitive pricing, and a 30-day paid pilot with white-glove onboarding.</p>
     </div>
     <div class="risk-card risk-med">
-      <h4>🔶 Technical: Multi-Tenant Isolation</h4>
+      <h4>🔶 Technical: <span class="pm-tooltip">Multi-Tenant Isolation<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Safety Deposit Boxes 🏦</span>We don't just dump everyone's money in one big vault. Each customer gets their own locked box with their own unique key.</span></span></h4>
       <p>One tenant's breach can't affect others. Solution: tenant-per-database-schema architecture, row-level security, isolated encryption keys.</p>
     </div>
     <div class="risk-card risk-med">
       <h4>🔶 Operational: Support at Scale</h4>
-      <p>IAM issues = urgent for customers. Solution: tiered SLA (P0 = 15min response), AI-assisted triage, runbooks for top-10 issues.</p>
+      <p>IAM issues = urgent for customers. Solution: <span class="pm-tooltip">tiered SLA (P0 = 15min response), AI-assisted triage, runbooks<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Emergency Room Triage 🚑</span>Critical issues get treated immediately by top doctors following a strict emergency protocol, instead of waiting in line.</span></span> for top-10 issues.</p>
     </div>
     <div class="risk-card risk-low">
-      <h4>🟢 Business: Pricing Complexity</h4>
+      <h4>🟢 Business: <span class="pm-tooltip">Pricing Complexity<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The Taxi Meter 🚖</span>Customers get anxious because they don't know what the final bill will be until the ride is over. Usage-based billing causes this anxiety.</span></span></h4>
       <p>Usage-based billing confuses buyers. Solution: simple tiered pricing with usage estimator tool and spend alerts built into dashboard.</p>
     </div>
     <div class="risk-card risk-low">
-      <h4>🟢 Technical: AI Model Drift</h4>
+      <h4>🟢 Technical: <span class="pm-tooltip">AI Model Drift<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Outdated Textbook 📚</span>Hackers invent new tricks, so if the AI doesn't keep studying new data, it falls behind. We test new AI models in the background before relying on them.</span></span></h4>
       <p>Fraud models become stale. Solution: continuous retraining pipeline, A/B testing new models in shadow mode before production rollout.</p>
     </div>
   </div>
@@ -1022,31 +1022,31 @@ body {
     <div class="legal-card">
       <h4>🔒 Data Privacy</h4>
       <ul>
-        <li>GDPR / CCPA compliance</li>
-        <li>Data minimization by design</li>
-        <li>Right to erasure (delete flows)</li>
-        <li>Consent management</li>
-        <li>Privacy Impact Assessments</li>
+        <li><span class="pm-tooltip">GDPR / CCPA compliance<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Strict Privacy Bouncer 🇪🇺</span>European and California rules that dictate exactly how you can handle someone's data, with massive fines for mistakes.</span></span></li>
+        <li><span class="pm-tooltip">Data minimization by design<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Only Pack What You Need 🎒</span>We don't collect data we don't strictly need. Less data stored means less damage if a leak happens.</span></span></li>
+        <li><span class="pm-tooltip">Right to erasure (delete flows)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The Shredder Button 🗑️</span>When a user wants their account deleted, we ensure their data is wiped from every single database and backup instantly.</span></span></li>
+        <li><span class="pm-tooltip">Consent management<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Permission Slip 📝</span>Keeping clear records of exactly what a user agreed to let us do with their information.</span></span></li>
+        <li><span class="pm-tooltip">Privacy Impact Assessments<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Blueprint Safety Check 🏗️</span>Reviewing a new feature before we build it to make sure it won't accidentally violate user privacy.</span></span></li>
       </ul>
     </div>
     <div class="legal-card">
       <h4>🛡️ Security</h4>
       <ul>
-        <li>AES-256 at rest, TLS 1.3 in transit</li>
+        <li><span class="pm-tooltip">AES-256 at rest, TLS 1.3 in transit<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Armored Truck & Safe 🚛</span>Data is protected while moving across the internet (armored truck) and heavily encrypted when stored on servers (the safe).</span></span></li>
         <li>Tenant-isolated encryption keys</li>
-        <li>Zero-trust architecture</li>
-        <li>SOC 2 Type II, ISO 27001</li>
-        <li>Penetration testing quarterly</li>
+        <li><span class="pm-tooltip">Zero-trust architecture<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Trust Nobody 🛑</span>We assume hackers are already inside the building, so every single door inside requires a badge swipe, not just the front door.</span></span></li>
+        <li><span class="pm-tooltip">SOC 2 Type II, ISO 27001<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Restaurant Health Inspector Rating 🅰️</span>Proof from an independent auditor that our security practices are actually as good as we claim they are.</span></span></li>
+        <li><span class="pm-tooltip">Penetration testing quarterly<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Hiring a Burglar 🥷</span>We pay professional ethical hackers to try and break into our system every 3 months so we can fix any weak spots they find.</span></span></li>
       </ul>
     </div>
     <div class="legal-card">
       <h4>⚖️ Legal / Compliance</h4>
       <ul>
-        <li>Data Processing Agreements (DPAs)</li>
-        <li>Sub-processor transparency</li>
-        <li>72-hour breach notification (GDPR)</li>
-        <li>Audit log retention (7 years)</li>
-        <li>HIPAA BAA available</li>
+        <li><span class="pm-tooltip">Data Processing Agreements (DPAs)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Handshake Contract 🤝</span>A legally binding promise between companies detailing exactly how user data will be protected.</span></span></li>
+        <li><span class="pm-tooltip">Sub-processor transparency<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Ingredient List 🥫</span>Telling our customers exactly which other companies (like Amazon or Google) we use to help run our service.</span></span></li>
+        <li><span class="pm-tooltip">72-hour breach notification (GDPR)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: The Fire Alarm Rule 🚨</span>If we get hacked, the law says we have exactly 3 days to tell the authorities and the affected people.</span></span></li>
+        <li><span class="pm-tooltip">Audit log retention (7 years)<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Archival Vault 🗄️</span>Keeping a secure, unchangeable record of everything that happens for 7 years, just in case auditors or lawyers need to see it later.</span></span></li>
+        <li><span class="pm-tooltip">HIPAA BAA available<span class="tooltip-text"><span class="pm-tooltip-analogy">Analogy: Medical Privacy Seal ⚕️</span>A strict US legal contract required if you handle any patient medical data.</span></span></li>
       </ul>
     </div>
   </div>
